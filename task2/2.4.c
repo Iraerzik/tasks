@@ -75,6 +75,7 @@ double str2double( char str[] )
 int main()
 {
 	char str[100];
+	printf("Введите строку-число: \n");
 	while (scanf("%s",str) == 1)
 		printf ("%.10g \n", str2double(str));
 					
