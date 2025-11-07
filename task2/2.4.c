@@ -9,6 +9,7 @@ double str2double( char str[] )
 	int exp_sign = 1;
 	int exp = 0;
 	double fraction = 0;
+	int r = 1;
 
 	if (str[i] == '-')
 	{	sign = -1;
@@ -41,6 +42,11 @@ double str2double( char str[] )
 	if (str[i] == 'e' || str[i] == 'E')
 	{ 
 		i++;
+		if (str[i] == 'r')
+		{	r = -1;
+			i++;
+		}
+
 		if (str[i] == '-')
 		{
 			exp_sign = -1;
@@ -48,7 +54,9 @@ double str2double( char str[] )
 		}
 		else if (str[i] == '+')
 			i++;
-		
+
+		exp_sign *= r;
+			
 		while (str[i] >= '0' && str[i] <= '9')
 		{
 			exp = exp*10 + (str[i] - '0');
